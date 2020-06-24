@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+   <ion-item *ngFor="let message of messages" lines="none" color="none">
+    <ion-img [hidden]="userId == message.id ? true : false" [slot]="userId == message.id ? 'end' : 'start'" style="width: 30px; height: 30px; margin-right: 10px;" src="../../assets/avatar.png"></ion-img>
+    <h3 [slot]="userId == message.id ? 'end' : 'start'">{{message.msg}}</h3>
+    <ion-img [hidden]="userId == message.id ? false : true" [slot]="userId == message.id ? 'end' : 'start'" style="width: 30px; height: 30px; margin-inline-start: 10px;" src="../../assets/avatar.png"></ion-img>
+   </ion-item>
+  </ion-list>
+ </ion-content>
+ <ion-footer>
+  <ion-item>
+   <ion-input autofocus="true" type="text" placeholder="Type message here..." [(ngModel)]="newmessage"></ion-input>
+   <ion-button (click)="send()">Send</ion-button>
+  </ion-item>
+ </ion-footer>
